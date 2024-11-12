@@ -58,7 +58,8 @@
 
         <script>
             //使用keydown事件（事件很多，它只是其中之一）
-            window.addEventListener("keydown", function (e) {
+
+            function playSounds(e) {
                 const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
                 const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
@@ -72,9 +73,17 @@
                 audio.play();
                 //可以連結 css 產生一寫變色行為
                 key.classList.add("playing");
-                key.classList.remove("playing");
-                key.classList.toggle("playing");
-            });
+            }
+
+            function removeTransition(e) {
+                if (e.propertyName !== "transform") return;
+                console.log(this);
+                this.classList.remove("playing");
+            }
+
+            const keys = document.querySelectorAll(".key");
+            keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
+            window.addEventListener("keydown", playSounds);
         </script>
     </body>
 </html>
