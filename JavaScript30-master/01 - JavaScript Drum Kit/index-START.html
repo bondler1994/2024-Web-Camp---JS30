@@ -72,16 +72,17 @@
                 //執行
                 audio.play();
                 //可以連結 css 產生一寫變色行為
-                key.classList.add("playing");
+                key.classList.add("playing2");
             }
 
             function removeTransition(e) {
                 if (e.propertyName !== "transform") return;
                 console.log(this);
-                this.classList.remove("playing");
+                this.classList.remove("playing2");
             }
 
             const keys = document.querySelectorAll(".key");
+            //這段用forEach 是為了給key 這個元素
             keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
             window.addEventListener("keydown", playSounds);
         </script>

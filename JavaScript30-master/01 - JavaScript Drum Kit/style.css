@@ -34,6 +34,11 @@ html {
 }
 
 .playing {
+    transform: scale(10);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+.playing2 {
     transform: scale(1.1);
     border-color: #ffc600;
     box-shadow: 0 0 1rem #ffc600;
