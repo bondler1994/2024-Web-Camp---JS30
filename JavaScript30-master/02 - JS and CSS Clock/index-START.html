@@ -69,7 +69,7 @@
         <script>
             const secondHand = document.querySelector(".second-hand");
             const minsHand = document.querySelector(".min-hand");
-            const hourHand = document.querySelector
+            const hourHand = document.querySelector(".hour-hand");
 
             function setDate() {
                 const now = new Date();
@@ -77,25 +77,35 @@
                 const seconds = now.getSeconds();
                 //設定秒數,總共會有60秒並且轉360度，90是指指針初始位置(所以會在正中心)
                 const secondsDegrees = (seconds / 60) * 360 + 90;
+                //操作class在css裡面得transform得參數
                 secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
                 const minutes = now.getMinutes();
                 const minutesDegrees = (minutes / 60) * 360 + 90;
                 minsHand.style.transform = `rotate(${minutesDegrees}deg)`;
 
-
+                const hour = now.getHours();
+                const hourDegrees = (hour / 12) * 360 + (min / 60) * 30 + 90;
+                hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+                // *以下是為了解決當時間跳轉到0時，會跳轉出現bug現象得問題
+                // 經過作者提示可以使用讓transform持續轉動得方式,或是取消transition
+                // 我選了第二個來解決
+                // 我這邊想像設立一個條件是檢查，當sec到0時，啟動贊停transition 得 func
                 if (seconds === 0) {
                     pauseTransition();
                 }
             }
-
+            //設定贊停transition func
             function pauseTransition() {
+                // 用querySelectorAll選取全部hand class，並且用forEach選取全部，
+                // 再要改變在css裡面transtition屬性得參數轉為none 記得none要用字串
                 document.querySelectorAll(".hand").forEach((hand) => {
                     hand.style.transition = `none`;
                 });
+                //延續上題，隨後設定時間差，延遲一秒，秒數為 0 時關閉，過了1秒 也就是時間1秒就會在從新賦予transition參數
                 setTimeout(() => {
                     document.querySelectorAll(".hand").forEach((hand) => {
-                        hand.style.transition = `all 0.05`;
+                        hand.style.transition = `all 0.05s`;
                     }, 1000);
                 });
             }
