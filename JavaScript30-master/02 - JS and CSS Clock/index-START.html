@@ -90,12 +90,12 @@
                 // *以下是為了解決當時間跳轉到0時，會跳轉出現bug現象得問題
                 // 經過作者提示可以使用讓transform持續轉動得方式,或是取消transition
                 // 我選了第二個來解決
-                // 我這邊想像設立一個條件是檢查，當sec到0時，啟動贊停transition 得 func
+                // 我這邊想像設立一個條件是檢查，當sec到0時，啟動暫停transition 得 func
                 if (seconds === 0) {
                     pauseTransition();
                 }
             }
-            //設定贊停transition func
+            //設定暫停transition func
             function pauseTransition() {
                 // 用querySelectorAll選取全部hand class，並且用forEach選取全部，
                 // 再要改變在css裡面transtition屬性得參數轉為none 記得none要用字串
@@ -110,7 +110,7 @@
                 });
             }
 
-            //操作 setDate func，使它有間歇性得每1（一次
+            //操作 setDate func，使它有間歇性得每1秒呼叫一次
             setInterval(setDate, 1000);
             setDate();
         </script>
