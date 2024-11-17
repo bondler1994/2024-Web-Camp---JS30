@@ -130,12 +130,21 @@
 
             // 7. sort Exercise
             // Sort the people alphabetically by last name
-            const test7 = people.sort(function (last, next) {
-                const parts = last.split(", ");
-                const getLast = parts[1];
-                const gotLast = getLast.sort((a, b) => a - b);
-                console.log(gotLast);
+            // const test7 = people.sort(function (last, next) {
+            //     const parts = last.split(", ");
+            //     const getLast = parts[1];
+            //     const gotLast = getLast.sort((a, b) => a - b);
+            //     // console.log(gotLast);
+            // });
+
+            const alpha = people.sort((lastOne, nextOne) => {
+                // 解構賦值
+                const [aLast, aFirst] = lastOne.split(", ");
+                const [bLast, bFirst] = nextOne.split(", ");
+                console.log([bLast, bFirst]);
+                return aLast > bLast ? 1 : -1;
             });
+            // console.log(alpha);
 
             // 8. Reduce Exercise
             // Sum up the instances of each of these
