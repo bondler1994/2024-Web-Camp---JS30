@@ -111,24 +111,31 @@
 
             const run = inventors.map((inventor) => inventor.passed - inventor.year);
             const test5 = run.sort((a, b) => a - b);
-            console.log(test5);
+            // console.log(test5);
 
             const oldest = inventors.sort(function (a, b) {
                 const lastInventor = a.passed - a.year;
                 const nextInventor = b.passed - b.year;
                 return lastInventor > nextInventor ? -1 : 1;
             });
-            console.table(oldest);
+            // console.table(oldest);
 
             // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
             // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-            const getCategory = document.querySelector(".mw-category");
-            const links = Array.from(getCategory.querySelectorAll("a"));
-            const de = links.map((link) => link.textContent).filter((streetName) => streetName.includes("de"));
+            // const getCategory = document.querySelector(".mw-category");
+            // const links = Array.from(getCategory.querySelectorAll("a"));
+            // const de = links.map((link) => link.textContent).filter((streetName) => streetName.includes("de"));
+            // console.table(de);
 
             // 7. sort Exercise
             // Sort the people alphabetically by last name
+            const test7 = people.sort(function (last, next) {
+                const parts = last.split(", ");
+                const getLast = parts[1];
+                const gotLast = getLast.sort((a, b) => a - b);
+                console.log(gotLast);
+            });
 
             // 8. Reduce Exercise
             // Sum up the instances of each of these
