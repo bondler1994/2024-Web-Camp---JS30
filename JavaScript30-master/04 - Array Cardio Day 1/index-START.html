@@ -130,25 +130,37 @@
 
             // 7. sort Exercise
             // Sort the people alphabetically by last name
-            // const test7 = people.sort(function (last, next) {
-            //     const parts = last.split(", ");
-            //     const getLast = parts[1];
-            //     const gotLast = getLast.sort((a, b) => a - b);
-            //     // console.log(gotLast);
-            // });
 
-            const alpha = people.sort((lastOne, nextOne) => {
-                // 解構賦值
-                const [aLast, aFirst] = lastOne.split(", ");
-                const [bLast, bFirst] = nextOne.split(", ");
-                console.log([bLast, bFirst]);
+            const test7 = people.sort((first, last) => {
+                const [aFirst, aLast] = first.split(", ");
+                const [bFirst, bLast] = last.split(", ");
                 return aLast > bLast ? 1 : -1;
             });
-            // console.log(alpha);
+            console.log(test7);
+
+            // const alpha = people.sort((lastOne, nextOne) => {
+            //     // 解構賦值
+            //     const [aLast, aFirst] = lastOne.split(", ");
+            //     const [bLast, bFirst] = nextOne.split(", ");
+            //     // console.log([bLast, bFirst]);
+            //     return aFirst > bFirst ? 1 : -1;
+            // });
+            // // console.log(alpha);
 
             // 8. Reduce Exercise
             // Sum up the instances of each of these
             const data = ["car", "car", "truck", "truck", "bike", "walk", "car", "van", "bike", "walk", "car", "van", "car", "truck"];
+
+            const tansfer = {};
+            const getherAround = data.reduce((a, b) => {
+                if (!a[b]) {
+                    a[b] = 0;
+                }
+                a[b]++;
+                return a;
+            }, tansfer);
+
+            console.log(tansfer);
         </script>
     </body>
 </html>
