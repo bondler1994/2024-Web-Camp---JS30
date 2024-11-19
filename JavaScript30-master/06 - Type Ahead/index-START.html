@@ -20,22 +20,38 @@
 
             const cities = [];
 
-            // 這裡得作用是要獲取json資料，並且推到cities[]裡面
+            // 第一步：這裡得作用是要獲取json資料，並且推到cities[]裡面
             fetch(endpoint)
                 .then((blob) => blob.json())
                 //因為用cities用const 所以這裡要用push 推到[]
                 .then((data) => cities.push(...data));
 
-            //接下來要做得Func，在使用搜尋框時，func會從這巨大得json陣列資料中篩檢，並且監聽輸入內容
+            //第二步：接下來要做得Func，在使用搜尋框時，func會從這巨大得json陣列資料中篩檢，並且監聽輸入內容
             //pass in the data to this function
             function findMatches(wordToMatch, cities) {
                 return cities.filter((place) => {
                     //wes說match()裡面要塞入一個變數
                     //如何將變數置入一般得表達式中？
-                    const regex = new R
-                    return place.city.match()
+                    //g代表全域得 i代表不論大小寫都搜
+                    const regex = new RegExp(wordToMatch, "gi");
+                    //這裡是指回傳使用者輸入得值，match偵測不論是輸入城市或是州
+                    return place.city.match(regex) || place.state.match(regex);
                 });
             }
+            //第三步：接下來要製作展示在前端給使用者看得func
+            function displayMatches() {
+                //使用第二步func做結合，三設立完按鍵功能，連接二，當使用者觸發連到二去挖資料
+                const matchArray = findMatches(this.value, cities);
+                
+            }
+
+            //選到html class .search ans .suggestions
+            const searchInput = document.querySelector(".search");
+            const suggestions = document.querySelector(".suggestions");
+
+            //這裡是製作當使用者輸入後，前端搜尋列會轉換並展示搜尋結果
+            searchInput.addEventListener("change", displayMatches);
+            searchInput.addEventListener("keyup", displayMatches);
         </script>
     </body>
 </html>
