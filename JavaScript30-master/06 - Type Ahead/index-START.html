@@ -38,11 +38,31 @@
                     return place.city.match(regex) || place.state.match(regex);
                 });
             }
+
+            // 此作用是在給字串commas
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
             //第三步：接下來要製作展示在前端給使用者看得func
             function displayMatches() {
                 //使用第二步func做結合，三設立完按鍵功能，連接二，當使用者觸發連到二去挖資料
                 const matchArray = findMatches(this.value, cities);
-                
+                //這行作用，當偵測到值，就會衍生出搜尋列表(向下捲軸) 並展示出來(這日後會非常需要)
+                const html = matchArray
+                    .map((place) => {
+                        //而這裡作用是標注(highLight)搜尋出來結果會
+                        const regex = new RegExp(this.value, "gi");
+                        const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+                        const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+                        return `
+                            <li>
+                                <span class="name">${cityName}, ${stateName}</span>
+                                <span class="population">${numberWithCommas(place.population)}</span>
+                            </li>
+                    `;
+                    })
+                    .join("");
+                suggestions.innerHTML = html;
             }
 
             //選到html class .search ans .suggestions
