@@ -41,7 +41,6 @@
 
             //3.最簡單得解法，直接擷取Date()方法，取得他的年份，然後在減去people.some參數得 取得年 貨值
             const isAdult03 = people.some((person) => new Date().getFullYear() - person.year >= 19);
-
             console.log(isAdult03);
             // Array.prototype.every() // is everyone 19 or older?
 
