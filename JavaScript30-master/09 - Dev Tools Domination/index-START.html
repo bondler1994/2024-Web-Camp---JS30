@@ -51,15 +51,29 @@
 
             // Viewing DOM Elements
             const p = document.querySelector("p");
-            //這樣是直接印輸html得內容
+            //這樣是直接印輸html得本身內容
             console.log(p);
             //這樣是印出p這個classList
             console.dir(p);
-
+            console.clear();
             // Grouping together
-
+            dogs.forEach((dog) => {
+                console.groupCollapsed(`${dog.name}`);
+                console.log(`this is ${dog.name}`);
+                console.log(`${dog.name} is ${dog.age} years old`);
+                console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+            });
+            console.groupEnd(`${dog.name}`);
             // counting
-
+            console.count("Watson");
+            console.count("Watson");
+            console.count("Paul");
+            console.count("Sam");
+            console.count("Sam");
+            console.count("Paul");
+            console.count("Watson");
+            console.count("Watson");
+            console.count("Watson");
             // timing
         </script>
     </body>
