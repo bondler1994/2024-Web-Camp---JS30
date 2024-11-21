@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Console Tricks!</title>
+        <link rel="icon" href="https://fav.farm/🔥" />
+    </head>
+    <body>
+        <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+        <script>
+            const dogs = [
+                { name: "Snickers", age: 2 },
+                { name: "hugo", age: 8 },
+            ];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+            function makeGreen() {
+                const p = document.querySelector("p");
+                p.style.color = "#BADA55";
+                p.style.fontSize = "50px";
+            }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+            // Regular
+            console.log("hello");
 
-    // Regular
-    console.log('hello');
+            // Interpolated
+            //1.傳統方式,但是現在已有變數取代
+            console.log("hello I am a %s ", "🤖");
+            //2.常用方式 先建立變數
+            const Robot = "🤖";
+            console.log(`hello I am a ${Robot}`);
+            // Styled
 
-    // Interpolated
+            // warning!
 
-    // Styled
+            // Error :|
 
-    // warning!
+            // Info
 
-    // Error :|
+            // Testing
 
-    // Info
+            // clearing
 
-    // Testing
+            // Viewing DOM Elements
 
-    // clearing
+            // Grouping together
 
-    // Viewing DOM Elements
+            // counting
 
-    // Grouping together
-
-    // counting
-
-    // timing
-
-  </script>
-</body>
+            // timing
+        </script>
+    </body>
 </html>
