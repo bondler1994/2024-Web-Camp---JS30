@@ -98,8 +98,31 @@
         <script>
             const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
             //addEvenLisner click 能做用於滑鼠點擊以及按鍵
+            let lastChecked;
+
             function handleCheck(e) {
-                console.log(e);
+                // 現在當按shift之後，它會遍歷任何一個check box
+                //檢查誰是第一個 誰是最後 而這之間得內容也會接觸
+                //偵測說沒有checked就是false 反之
+                let inBetween = false;
+                //shiftKey 作用是按住Shift點擊後
+                if (e.shiftKey && this.checked) {
+                    //loop every singlr box
+                    checkboxes.forEach((checkbox) => {
+                        console.log(checkbox);
+
+                        //在這裡它會重頭跑到尾，檢查所有得內容。
+                        //在log會顯示
+                        if (checkbox === this || checkbox === lastChecked) {
+                            inBetween = !inBetween;
+                            console.log("Starting to check them inbetween!");
+                        }
+                        if (inBetween) {
+                            checkbox.checked = true;
+                        }
+                    });
+                }
+                lastChecked = this;
             }
             checkboxes.forEach((checkbox) => checkbox.addEventListener("click", handleCheck));
         </script>
