@@ -52,7 +52,7 @@
             console.dir(p);
             console.clear();
 
-            // Grouping together
+            // Grouping together 群組作用
 
             const dogs = [
                 { name: "Snickers", age: 2 },
@@ -60,14 +60,16 @@
             ];
 
             dogs.forEach((dog) => {
+                //groupCollapsed 是到三角形收復功能
                 console.groupCollapsed(`${dog.name}`);
                 console.log(`This is ${dog.name}`);
                 console.log(`${dog.name} is ${dog.age}years old`);
                 console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+                // 最後一定要家這個
                 console.groupEnd(`${dog.name}`);
             });
 
-            // counting
+            // counting 會計算有幾筆資料
 
             console.count("Watson");
             console.count("Watson");
@@ -79,9 +81,14 @@
             console.count("Watson");
             console.count("Watson");
 
-            // timing
-
-            
+            // timing 計算運算時間 或是刷新時間
+            console.time("fetching data");
+            fetch("https://api.github.com/users/wesbos")
+                .then((data) => data.json())
+                .then((data) => {
+                    console.timeEnd("fetching data");
+                    console.log(data);
+                });
         </script>
     </body>
 </html>
