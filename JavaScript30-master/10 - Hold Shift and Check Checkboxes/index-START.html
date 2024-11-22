@@ -96,9 +96,12 @@
         </div>
 
         <script>
-            const checkboxes = document.querySelectorAll(".inbox input[type="checkbox"]");
+            const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
             //addEvenLisner click 能做用於滑鼠點擊以及按鍵
-            checkboxes.forEach(checkbox => checkbox.addEventListener("click",callback:EventListener,capture?))
+            function handleCheck(e) {
+                console.log(e);
+            }
+            checkboxes.forEach((checkbox) => checkbox.addEventListener("click", handleCheck));
         </script>
     </body>
 </html>
