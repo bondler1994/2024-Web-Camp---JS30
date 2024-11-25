@@ -12,9 +12,13 @@ function togglePlay() {
     video[method]();
 }
 
+//此處再做得是當播放影片，按鍵得圖示會跳轉
 function updateButton() {
-    const icon = this.paused ? "▶️" : "⏸️";
+    const icon = this.paused ? "►" : "❚ ❚";
+    toggle.textContent = icon;
 }
+
+
 
 //這邊做得事，點擊不論影片或是按鈕都會暫停影片
 video.addEventListener("click", togglePlay);
@@ -23,3 +27,4 @@ video.addEventListener("play", togglePlay);
 video.addEventListener("pause", togglePlay);
 
 toggle.addEventListener("click", togglePlay);
+skipButtons;
