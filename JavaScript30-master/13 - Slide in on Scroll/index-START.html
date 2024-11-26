@@ -141,7 +141,7 @@
         </div>
 
         <script>
-            //once every 20 millisecond
+            //once every 20 millisecond effect web scroll
             function debounce(func, wait = 20, immediate = true) {
                 var timeout;
                 return function () {
@@ -157,19 +157,22 @@
                     if (callNow) func.apply(context, args);
                 };
             }
-
-            const slideImage = document.querySelectorAll("slide-in");
+            //1.先選到東西
+            const sliderImages = document.querySelectorAll(".slide-in");
 
             //這邊wes說 單純用scroll划會跑很多次這個func所以改變了作法
+            //3.這裡要做得事，當往下划之後才有反應
             function checkSlide(e) {
-                console.log(window.scrollY);
+                //loop every single image, 決定圖片何時要出現
+                //在滑道圖片一半時 圖片會顯示50%
                 sliderImages.forEach((slideImage) => {
+                    //不知道原理，但是這想寫得作用就是當滑道圖片得層級時，讓圖片先顯示50%會
                     const slideInAt = window.scrollY + window.innerHeight - slideImage.height / 2;
                     console.log(slideInAt);
                 });
-            }
+            } 
 
-            //網頁畫面往下划 觸發防止抖
+            //2.網頁畫面往下划 觸發防止抖
             window.addEventListener("scroll", debounce(checkSlide));
         </script>
 
