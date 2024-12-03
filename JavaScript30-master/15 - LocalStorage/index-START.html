@@ -76,15 +76,20 @@
                 this.reset();
             }
 
+            //此處作用是要將使用者輸入得值，置入html
+            //建立func 叫做填充清單，放入plates空陣列參數，與platesList要將生成的清單插入的 HTML 元素
             function populateList(plates = [], platesList) {
+                //將platesList得生成東西丟進HTML，藉由plates遍例
                 platesList.innerHTML = plates
                     .map((plate, i) => {
+                        //透過plate遍例 將輸入text置入html
                         return `
                     <li>
                         <label for ="">${plate.text}</label>
                     </li>
                     `;
                     })
+                    //家入內容 刪除空格或標點符號
                     .join("");
             }
 
