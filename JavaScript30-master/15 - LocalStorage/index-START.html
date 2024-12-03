@@ -59,12 +59,14 @@
             const itemsList = document.querySelector(".plates");
             const items = [];
 
+            // 這裡先建立使用者輸入後會有值產生，並且是物件
             function addItem(e) {
                 const text = this.querySelector("[name=item]").value;
                 const item = {
-                    text: "Item Name",
+                    text,
                     done: false,
                 };
+                console.log(item);
             }
 
             addItems.addEventListener("submit", addItem);
