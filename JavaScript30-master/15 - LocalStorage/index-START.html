@@ -61,6 +61,8 @@
 
             // 這裡先建立使用者輸入後會有值產生，並且是物件
             function addItem(e) {
+                // 有執行但沒有跳轉網頁，可能是為了填表單防止跳轉得關係
+                e.preventDefault();
                 const text = this.querySelector("[name=item]").value;
                 const item = {
                     text,
