@@ -61,7 +61,7 @@
 
             // 這裡先建立使用者輸入後會有值產生，並且是物件
             function addItem(e) {
-                // 有執行但沒有跳轉網頁，可能是為了填表單防止跳轉得關係
+                // 有執行但沒有跳轉網頁，可能是為了填表單防止跳轉或刷新得關係
                 e.preventDefault();
                 const text = this.querySelector("[name=item]").value;
                 const item = {
@@ -70,8 +70,22 @@
                 };
                 //選取要使用得空殼，在選取要推到空殼鋰得東西
                 items.push(item);
+
+                populateList(items, itemsList);
                 // 這段是使用者輸入完畢後，確認完，輸入框input就會重製內容
                 this.reset();
+            }
+
+            function populateList(plates = [], platesList) {
+                platesList.innerHTML = plates
+                    .map((plate, i) => {
+                        return `
+                    <li>
+                        <label for ="">${plate.text}</label>
+                    </li>
+                    `;
+                    })
+                    .join("");
             }
 
             addItems.addEventListener("submit", addItem);
