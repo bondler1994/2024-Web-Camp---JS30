@@ -66,7 +66,8 @@
                     text,
                     done: false,
                 };
-                console.log(item);
+                // 這段是使用者輸入完畢後，確認完，輸入框input就會重製內容
+                this.reset();
             }
 
             addItems.addEventListener("submit", addItem);
