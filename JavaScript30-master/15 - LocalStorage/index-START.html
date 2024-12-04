@@ -57,7 +57,7 @@
         <script>
             const addItems = document.querySelector(".add-items");
             const itemsList = document.querySelector(".plates");
-            const items = [];
+            const items = JSON.parse(localStorage.getItem("items")) || [];
 
             // 這裡先建立使用者輸入後會有值產生，並且是物件
             function addItem(e) {
@@ -72,6 +72,7 @@
                 items.push(item);
 
                 populateList(items, itemsList);
+                localStorage.setItem("items", JSON.stringify(items));
                 // 這段是使用者輸入完畢後，確認完，輸入框input就會重製內容
                 this.reset();
             }
@@ -94,8 +95,19 @@
                     //家入內容 刪除空格或標點符號
                     .join("");
             }
+            function toggleDone(e) {
+                if (!e.target.matches("input")) return;
+                console.log(e.target);
+                const el = e.target;
+                const index = el.dataset.index;
+                items[index].done = !items[index].done;
+                localStorage.setItem("items", JSON.stringify(items));
+                populateList(items, itemsList);
+            }
 
             addItems.addEventListener("submit", addItem);
+            itemsList.addEventListener("click", toggleDone);
+            populateList(items, itemsList);
         </script>
     </body>
 </html>
