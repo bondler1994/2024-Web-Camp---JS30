@@ -71,10 +71,10 @@
 
             // no1選取data，並將data轉換成array
             const timeNodes = Array.from(document.querySelectorAll("[data-time]"));
-            console.log(timeNodes);
+            // console.log(timeNodes);
 
             //no2選取timeNodes常數，並且對其
-            const second = timeNodes
+            const seconds = timeNodes
                 //此段為map出新得陣列，擷取data.time，dataset是擷取data-*，而time是代表data-time得time
                 .map((node) => node.dataset.time)
                 .map((timeCode) => {
@@ -92,6 +92,8 @@
             //math.floor是去除小數點
             const hours = Math.floor(secondsLeft / 3600);
             secondsLeft = secondsLeft % 3600;
+
+            console.log(secondsLeft);
         </script>
     </body>
 </html>
