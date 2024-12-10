@@ -83,10 +83,15 @@
                     //轉換完後 將分鐘乘上60就會轉成秒數，然後再與秒數相加
                     return mins * 60 + secs;
                 })
+                //上面搞後，在讓所有data-time得秒數全部相加
+                //total是累加。visSeconds是只索引所有陣列 總之就是跑全家在一起就對了啦 fuxk
                 .reduce((total, vidSeconds) => total + vidSeconds);
 
-            let secondsLeft = secondsLeft;
-            const hours = Math.floor();
+            let secondsLeft = seconds;
+            //小時就等於上面得秒數 / 3600 ，因為一小時等於 3600 所以小時除以3600 就會是小時
+            //math.floor是去除小數點
+            const hours = Math.floor(secondsLeft / 3600);
+            secondsLeft = secondsLeft % 3600;
         </script>
     </body>
 </html>
