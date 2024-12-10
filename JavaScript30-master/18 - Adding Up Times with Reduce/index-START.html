@@ -72,16 +72,20 @@
             // no1選取data，並將data轉換成array
             const timeNodes = Array.from(document.querySelectorAll("[data-time]"));
             console.log(timeNodes);
-            
-            //
+
+            //no2選取timeNodes常數，並且對其
             const second = timeNodes
+                //此段為map出新得陣列，擷取data.time，dataset是擷取data-*，而time是代表data-time得time
                 .map((node) => node.dataset.time)
                 .map((timeCode) => {
-                  //解構付值
-                    const [mins, secs] = timeCode.split(":");
-                });
+                    //解構付值後，用map重新組成陣列，並且idk 這裡要用parseFloat
+                    const [mins, secs] = timeCode.split(":").map(parseFloat);
+                    return mins * 60 + secs;
+                })
+                .reduce((total, vidSeconds) => total + vidSeconds);
 
-            console.log(second);
+            let secondsLeft = secondsLeft;
+            const hours = Math.floor();
         </script>
     </body>
 </html>
