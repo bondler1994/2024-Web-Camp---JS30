@@ -65,13 +65,15 @@
             function strip(bandName) {
                 return bandName.replace(/^(a |the |an )/i, "").trim();
             }
-
+            //no2 建立常數，並調用strip func 使用大到小排列
             const sortedBands = bands.sort((a, b) => (strip(a) > strip(b) ? 1 : -1));
             //     return 1;
             // } else {
             //     return;
             //     -1;
             // }
+            
+            //no3 最後選取要插入得HTML,槳
             document.querySelector("#bands").innerHTML = sortedBands.map((band) => `<li>${band}</li>`).join("");
 
             console.log(sortedBands);
