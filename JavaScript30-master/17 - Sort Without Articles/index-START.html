@@ -52,7 +52,7 @@
                 "Norma Jean",
                 "The Bled",
                 "Say Anything",
-                "The Midway State",
+                "The  Midway State",
                 "We Came as Romans",
                 "Counterparts",
                 "Oh, Sleeper",
@@ -61,11 +61,11 @@
                 "An Old Dog",
             ];
 
-            // 此func是刪除特定選取得單字，並且刪除前與尾段空格
+            // no1 建立此func，replace()刪除特定選取得單字得正規表達式，trim()刪除前與尾段空格
             function strip(bandName) {
                 return bandName.replace(/^(a |the |an )/i, "").trim();
             }
-            
+
             const sortedBands = bands.sort((a, b) => (strip(a) > strip(b) ? 1 : -1));
             //     return 1;
             // } else {
