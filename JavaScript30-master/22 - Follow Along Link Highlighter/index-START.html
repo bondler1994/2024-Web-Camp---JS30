@@ -43,11 +43,9 @@
         <script>
             const input = [123, 45, 6, 789];
 
-            input.forEach((a)=>{
-                a.toString()
-                .split("")
-                
-            })
+            input.forEach((a) => {
+                a.toString().split("");
+            });
 
             const trigger = document.querySelectorAll("a");
             const highlight = document.createElement("span");
@@ -55,7 +53,12 @@
             document.body.append(highlight);
 
             function highlightLink() {
-                console.log(this);
+                //getBoundingClientRect可以藉由console.log提供詳細得矩形離viewport左上角得具體位置
+                const linkCoords = this.getBoundingClientRect();
+                console.log(linkCoords);
+                //這裡是製作當hover上去得動畫
+                highlight.style.width = `${linkCoords.width}px`;
+                highlight.style.height = `${linkCoords.height}px`;
             }
 
             //這裡理念是遍例所有被選取得 a ，遍例後並且賦予他們mousemove 功能。然後調用highlightLink func
