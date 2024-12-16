@@ -56,9 +56,17 @@
                 //getBoundingClientRect可以藉由console.log提供詳細得矩形離viewport左上角得具體位置
                 const linkCoords = this.getBoundingClientRect();
                 console.log(linkCoords);
-                //這裡是製作當hover上去得動畫
+                const coords = {
+                    width: linkCoords.width,
+                    highlight: linkCoords.height,
+                    top: (linkCoords.top = window.screenY),
+                    top: (linkCoords.left = window.screenX),
+                };
+                //這裡是製作當hover上去得動畫，使用getBoundingClientRect 吃到框得上下左右
                 highlight.style.width = `${linkCoords.width}px`;
                 highlight.style.height = `${linkCoords.height}px`;
+                //這是動畫形式
+                highlight.style.transform = `translate(${linkCoords.left}px, ${linkCoords.top}px)`;
             }
 
             //這裡理念是遍例所有被選取得 a ，遍例後並且賦予他們mousemove 功能。然後調用highlightLink func
