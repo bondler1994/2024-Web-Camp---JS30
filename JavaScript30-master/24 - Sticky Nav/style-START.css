@@ -27,6 +27,11 @@ body {
     transition: transform 0.5s;
 }
 
+/* no10 增加page 放大動畫 */
+.fixed-nav .site-wrap {
+    transform: scale(1);
+}
+
 header {
     text-align: center;
     height: 50vh;
@@ -79,6 +84,11 @@ li.logo {
     transition: all 0.5s;
     font-weight: 600;
     font-size: 30px;
+}
+
+/* no9 製作logo滑出動畫 */
+.fixed-nav li.logo {
+    max-width: 500px;
 }
 
 li.logo a {

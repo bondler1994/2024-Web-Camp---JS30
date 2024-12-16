@@ -181,11 +181,15 @@
 
             //no2 建立一個操控nav func
             function fixNav() {
-                //no6 建立當捲動y軸到達nav高度時 增加class 若無就移除class
-                //no7 接下來就可以去css新增add class得內容了
                 if (window.scrollY >= topOfNav) {
+                    //no8
+                    document.body.style.paddingTop = nav.offsetHeight + "px";
+                    //no6 建立當捲動y軸到達nav高度時 增加class 若無就移除class
+                    //no7 接下來就可以去css新增add class得內容了
                     document.body.classList.add("fixed-nav");
                 } else {
+                    document.body.style.paddingTop = 0;
+
                     document.body.classList.remove("fixed-nav");
                 }
 
