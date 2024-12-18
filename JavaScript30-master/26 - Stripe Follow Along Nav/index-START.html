@@ -238,12 +238,11 @@
             //設立滑鼠移入就會元神啟動
             function handleEnter() {
                 this.classList.add("trigger-enter");
-                setTimeout(() => this.classList.contains("trigger-enter") && this.classList.add
-                ("trigger-enter-active"), 150);
-                
+                setTimeout(() => this.classList.contains("trigger-enter") && this.classList.add("trigger-enter-active"), 150);
+
                 background.classList.add("open");
 
-                //這裡就厲害了 側量框得此寸 並且自適應框
+                //這裡就厲害了 側量框得尺寸 並且自適應框
                 const dropdown = this.querySelector(".dropdown");
                 const dropdownCoords = dropdown.getBoundingClientRect();
                 const navCoords = nav.getBoundingClientRect();
@@ -258,7 +257,7 @@
 
                 //setProperty可以設定其值 針對css改值
                 background.style.setProperty("width", `${coords.width}px`);
-                background.style.setProperty("height", `${coords.width}px`);
+                background.style.setProperty("height", `${coords.height}px`);
 
                 //A這裡建立一個偵測 左與上，但這邊要注意 目前只是改變其位置 但是還不會完全貼何內容
                 background.style.setProperty("transform", `translate(${coords.left}px, ${coords.top}px)`);
