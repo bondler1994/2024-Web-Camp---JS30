@@ -247,13 +247,19 @@
                 const navCoords = nav.getBoundingClientRect();
 
                 const coords = {
-                  height:dropdownCoords.height
-                  width:dropdownCoords.width
-                }
+                    height: dropdownCoords.height,
+                    width: dropdownCoords.width,
+                    //B這裡基於A 來製作
+                    top: dropdownCoords.top - navCoords.top,
+                    left: dropdownCoords.left - navCoords.left,
+                };
 
-                background.style.setProperty("width",`${coords.width}px`)
-                background.style.setProperty("height",`${coords.width}px`)
+                //setProperty可以設定其值 針對css改值
+                background.style.setProperty("width", `${coords.width}px`);
+                background.style.setProperty("height", `${coords.width}px`);
 
+                //A這裡建立一個偵測 左與上，但這邊要注意 目前只是改變其位置 但是還不會完全貼何內容
+                background.style.setProperty("transform", `translate(${coords.left}px, ${coords.top}px)`);
             }
 
             //設立當離開就會跳出狀態
