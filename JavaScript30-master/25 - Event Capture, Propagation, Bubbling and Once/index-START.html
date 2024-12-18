@@ -45,6 +45,7 @@
         <script>
             //no1 選取div
             const divs = document.querySelectorAll("div");
+            const button = document.querySelector("button");
             // 指定一個class給body
             document.body.classList = "bod";
 
@@ -53,14 +54,23 @@
                 //no3 基於no2 給與一個方法 停止繁殖stopPropagation()
                 // e.stopPropagation();
             }
-            ㄑ;
             // no2 這邊選取全部div，並賦予全部div click事件，後面是選取func 測試
             // 但這裡會出現一個狀況，就是事件冒泡，當點選其中一個div，全部都會被選到
             divs.forEach((div) =>
                 div.addEventListener("click", logText, {
                     capture: false,
+                    //建立此是為了點擊時 只能觸發一次
                     once: true,
                 })
+            );
+
+            //最後這裡可見 給button加上點擊 once ，在devtool看 重複點擊button就不會作用了
+            button.addEventListener(
+                "click",
+                () => {
+                    console.log("been click");
+                },
+                { once: true }
             );
         </script>
     </body>
