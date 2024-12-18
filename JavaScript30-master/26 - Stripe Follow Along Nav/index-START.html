@@ -238,7 +238,9 @@
             //設立滑鼠移入就會元神啟動
             function handleEnter() {
                 this.classList.add("trigger-enter");
-                setTimeout(() => this.classList.add("trigger-enter-active"), 150);
+                setTimeout(() => this.classList.contains("trigger-enter") && this.classList.add
+                ("trigger-enter-active"), 150);
+                
                 background.classList.add("open");
 
                 //這裡就厲害了 側量框得此寸 並且自適應框
