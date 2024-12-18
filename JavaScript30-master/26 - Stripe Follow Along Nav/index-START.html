@@ -231,19 +231,22 @@
         </style>
 
         <script>
-            const triggers = document.(".cool > li");
+            const triggers = document.querySelectorAll(".cool > li");
             const background = document.querySelector(".dropdownBackground");
             const nav = document.querySelector(".top");
 
             function handleEnter() {
-                console.log("ENTER!!");
+                this.classList.add("trigger-enter");
+                setTimeout(() => {
+                    this.classList.add("trigger-enter-actvie");
+                }, 150);
             }
             function handleLeave() {
-                console.log("LEAVE!!");
+                this.classList.remove("trigger-enter", "triggers-enter-active");
             }
 
-            triggers.forEach((trigger) => trigger.addEvenListener("mouseenter", handleEnter));
-            triggers.forEach((trigger) => trigger.addEvenListener("mouseleave", handleLeave));
+            triggers.forEach((trigger) => trigger.addEventListener("mouseenter", handleEnter));
+            triggers.forEach((trigger) => trigger.addEventListener("mouseleave", handleLeave));
         </script>
     </body>
 </html>
