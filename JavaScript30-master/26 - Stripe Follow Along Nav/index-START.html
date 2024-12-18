@@ -237,10 +237,10 @@
 
             function handleEnter() {
                 this.classList.add("trigger-enter");
-                setTimeout(() => {
-                    this.classList.add("trigger-enter-actvie");
-                }, 150);
+                setTimeout(() => this.classList.add("trigger-enter-actvie"), 150);
+                background.classList.add("open");
             }
+
             function handleLeave() {
                 this.classList.remove("trigger-enter", "triggers-enter-active");
             }
